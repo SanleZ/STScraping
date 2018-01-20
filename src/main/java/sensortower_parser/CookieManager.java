@@ -57,8 +57,9 @@ public final class CookieManager {
 
 
         // OK, now we are ready to get the cookies out of the URLConnection
-
         String headerName;
+
+
 
         for (int i = 1; (headerName = conn.getHeaderFieldKey(i)) != null; i++) {
             if (headerName.equalsIgnoreCase(SET_COOKIE)) {
@@ -157,7 +158,9 @@ public final class CookieManager {
     }
 
     private boolean comparePaths(String cookiePath, String targetPath) {
-        return cookiePath == null || cookiePath.equals("/") || targetPath.regionMatches(0, cookiePath, 0, cookiePath.length());
+        return cookiePath == null
+                || cookiePath.equals("/")
+                || targetPath.regionMatches(0, cookiePath, 0, cookiePath.length());
 
     }
 
