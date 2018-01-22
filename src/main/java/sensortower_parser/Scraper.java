@@ -7,7 +7,7 @@ import com.google.gson.JsonParser;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLEncoder;
-
+//n
 public class Scraper {
 
     private static CookieManager cookieManager = new CookieManager();
