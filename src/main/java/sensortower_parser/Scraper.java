@@ -30,8 +30,8 @@ public class Scraper {
     private static String research(final String keyword, final String countryCode) throws Exception {
         StringBuilder urlSb = new StringBuilder()
                 .append("https://sensortower.com/api/android/ajax/research_keyword?page_index=0&term=")
-                .append(URLEncoder.encode(keyword,"UTF-8"))
-                .append("&country=").append(URLEncoder.encode(countryCode,"UTF-8"))
+                .append(URLEncoder.encode(keyword, "UTF-8"))
+                .append("&country=").append(URLEncoder.encode(countryCode, "UTF-8"))
                 .append("&realtime=true");
 
         Response response = HttpUtil.get(new URL(urlSb.toString()), cookieManager);
@@ -61,10 +61,20 @@ public class Scraper {
     }
 
     public static void main(String[] args) throws Exception {
-        if (Scraper.login("", "")) {
+        long startTime = System.currentTimeMillis();
+        if (Scraper.login("zemsanya@gmail.com", "q1w2e3")) {
+            long loginTime = System.currentTimeMillis();
+            System.out.printf("Login time: %d%n", (loginTime - startTime));
             System.out.println(Scraper.research("my key", "US"));
+            long oneReqTime = System.currentTimeMillis();
+            System.out.printf("The time of 1 request: %d%n", oneReqTime - loginTime);
             System.out.println(Scraper.research("keyword", "US"));
+            System.out.println(Scraper.research("keyword", "IT"));
             System.out.println(Scraper.research("saturday", "FR"));
+            System.out.println(Scraper.research("terminator", "FR"));
+
+            long fiveReqTime = System.currentTimeMillis();
+            System.out.printf("The time of 5 request: %d%n", fiveReqTime - loginTime);
         }
     }
 }

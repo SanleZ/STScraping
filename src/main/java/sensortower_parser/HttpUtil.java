@@ -26,8 +26,8 @@ public class HttpUtil {
             connection = (HttpURLConnection) url.openConnection();
         }
 
-        connection.setConnectTimeout(920000); //20 seconds
-        connection.setReadTimeout(940000); //40 seconds
+        connection.setConnectTimeout(20000); //20 seconds
+        connection.setReadTimeout(40000); //40 seconds
 
         if (isHttps) {
             ((HttpsURLConnection) connection).setInstanceFollowRedirects(false);
